@@ -1,0 +1,59 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+        
+        </ul>
+        <button type="button" class="btn btn-primary ms-auto" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          ADD NEW HTTPCLIENT
+        </button>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">NEW CLIENT</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form (ngSubmit)="onSubmit()" #postForm="ngForm">
+            <div class="form-group">
+              <label for="title" class="form-label">Title:</label>
+              <input type="text" id="title" name="title" [(ngModel)]="formData.title" required class="form-control" #title="ngModel">
+            </div>
+            <div class="form-group">
+              <label for="body" class="form-label">Body:</label>
+              <input type="text" id="body" name="body" [(ngModel)]="formData.body" required class="form-control" #body="ngModel">
+            </div>
+            <div>
+              <button type="submit" class="btn btn-primary submit-button" [disabled]="postForm.invalid" data-bs-dismiss="modal">Submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<h1 class="text-center mt-4">Angular HttpClient Example</h1>
+<ul class="list-group" id="custom-ul">
+    <li *ngFor="let post of posts" class="list-group-item d-flex justify-content-between align-items-center">
+      <div style="max-width: 80%;"> 
+        {{ post.title }}
+      </div>
+      <button class="btn btn-danger" (click)="deleteItem(post.id)">Delete</button>
+    </li>
+  </ul>
+
+  
